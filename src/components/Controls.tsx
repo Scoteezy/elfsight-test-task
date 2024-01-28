@@ -64,8 +64,7 @@ const Controls = ({onSearch}: ControlsProps) => {
     
     console.log(typeValue + " " + speciesValue + " " + statusValue + " " + genderValue);
     onSearch(search,speciesValue, statusValue,genderValue, typeValue);
-    //eslint-disable-next-line
-  },[search,gender, species,status,type])
+  },[search,gender, species,status,type]);
 
   return (
     <Wrapper>

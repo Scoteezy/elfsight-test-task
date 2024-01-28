@@ -5,22 +5,23 @@ import axios from "axios";
 import Card from "../components/Card";
 import Controls from "../components/Controls";
 import List from "../components/List";
+import Pagination from "../components/Pagination";
 import { ALL_CHARACTERS } from "../config";
 import { Character,Info } from "../types/types";
 interface HomePageProps{
     characters: Character[];
     setCharacters: (data: Character[])=> void;
 }
-const page = 1;
 const HomePage = ({characters,setCharacters}:HomePageProps) => {
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
+  const [pages,setPages] = useState(0);
+  const [currentPage,setCurrentPage] = useState(1);
 
-  console.log(filteredCharacters);
   
   const handleSearch = (search?:string, species?:string,status?:string, gender?: string, type?: string)=>{ 
     let data = [...characters];
 
-    console.log(gender + " " + status);
+    console.log(data);
     if(status){
       data = data.filter(char => char.status.toLowerCase().includes(status.toLowerCase()));
     }
@@ -41,19 +42,17 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
   };
 
   useEffect(()=>{
-    if(!characters.length){
-      axios.get(ALL_CHARACTERS).then(
-        ({data})=> setCharacters(data.results)
-      );
-    }
+    axios.get(`${ALL_CHARACTERS}/?page=${currentPage}`).then(
+      ({data})=> {
+        setCharacters(data.results);
+        setPages(data.info.pages);
+      }
+    );
+  },[currentPage]);
 
-    //eslint-disable-next-line
-},[]);
   useEffect(()=>{
     handleSearch();
-    
-  //eslint-disable-next-line
-  },[characters])
+  },[characters]);
   return (
     <>
       <Controls onSearch={handleSearch}/>
@@ -67,11 +66,12 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
           };
 
           return ( 
-            <Card id={char.id} key={char.name} onClick={()=>console.log("asd")} {...characterInfo}/>
+            <Card id={char.id} key={char.id} onClick={()=>console.log("asd")} {...characterInfo}/>
           );
         }
         )}
       </List>
+      <Pagination currentPage={currentPage} setPage={setCurrentPage} totalPages={pages}/>
     </>
   );
 };

@@ -14,7 +14,7 @@
   --fw-bold:800;
 
   /* Other */
-  --radii: 0.5remn
+  --radii: 0.5rem;
 }
 
 
@@ -22,13 +22,15 @@ body[data-theme='dark']{
   --colors-text: hsl(0, 0%, 100%);
   --color-bg:hsl(207, 26%, 17%);
   --colors-ui-base:hsl(209, 23%, 22%);
+  --color-disabled: hsl(209, 23%, 12%);
+
   --shadow: rgba(245,245,245,0.2) 0 0 8px;
 }
 body[data-theme='light']{
   --colors-text:hsl(200, 15%, 8%);
   --color-bg:hsl(0, 0%, 98%);
   --colors-ui-base:hsl(0, 0%, 100%);
-
+  --color-disabled: hsl(0, 0%, 90%);
 
   --shadow: rgba(149,157,165, 0.2) 0px 8px 24px;
 }

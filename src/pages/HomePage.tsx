@@ -20,20 +20,22 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
   const handleSearch = (search?:string, species?:string,status?:string, gender?: string, type?: string)=>{ 
     let data = [...characters];
 
+    console.log(gender + " " + status);
     if(status){
       data = data.filter(char => char.status.toLowerCase().includes(status.toLowerCase()));
     }
     if(gender){
       data = data.filter(char => char.gender.toLowerCase()===gender.toLowerCase());
     }
-    if(search) { 
-      data = data.filter(char=>char.name.toLowerCase().includes(search.toLowerCase()));
-    }
+    
     if(species){
       data = data.filter(char=>char.species.toLowerCase().includes(species.toLowerCase()));
     }
     if(type){
       data = data.filter(char=>char.type.toLowerCase().includes(type.toLowerCase()));
+    }
+    if(search) { 
+      data = data.filter(char=>char.name.toLowerCase().includes(search.toLowerCase()));
     }
     setFilteredCharacters(data);
   };

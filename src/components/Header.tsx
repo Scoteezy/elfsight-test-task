@@ -33,27 +33,27 @@ const ModeSwitcher = styled.div`
 `;
 
 const Header = () => {
-  const [theme,setTheme] = useState("light");
+	const [theme,setTheme] = useState("light");
 
-  const toggleTheme = ()=> setTheme(theme ==="light" ? "dark" : "light");
+	const toggleTheme = ()=> setTheme(theme ==="light" ? "dark" : "light");
 
-  useEffect(()=>{
-    document.body.setAttribute("data-theme",theme);
-  },[theme]);
-  return (
-    <HeaderElement>
-      <Container>
-        <Wrapper>
-          <Title>Rick And Morty Characters</Title>
-          <ModeSwitcher onClick={toggleTheme}>
-            {theme ==="light" ? (<IoMoonOutline size="14px"/>) : ( <IoMoon size="14px"/>)}
+	useEffect(()=>{
+		document.body.setAttribute("data-theme",theme);
+	},[theme]);
+	return (
+		<HeaderElement>
+			<Container>
+				<Wrapper>
+					<Title>Rick And Morty Characters</Title>
+					<ModeSwitcher onClick={toggleTheme}>
+						{theme ==="light" ? (<IoMoonOutline size="14px"/>) : ( <IoMoon size="14px"/>)}
                    
-            <span style={{marginLeft:"0.75rem"}}>{theme} Theme</span>
-          </ModeSwitcher>
-        </Wrapper>
-      </Container>
-    </HeaderElement>
-  );
+						<span style={{marginLeft:"0.75rem"}}>{theme} Theme</span>
+					</ModeSwitcher>
+				</Wrapper>
+			</Container>
+		</HeaderElement>
+	);
 };
 
 export default Header;

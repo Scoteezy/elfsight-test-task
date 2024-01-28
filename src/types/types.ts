@@ -12,7 +12,10 @@ export type Character = {
         url: string
     },
     image: string,
-    episode: string[]
+    location: {
+        name : string,
+        url: string,
+    }
     url: string
     created: string
 }

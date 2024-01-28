@@ -25,11 +25,11 @@ const Wrapper = styled.section`
 
 
 const List = ({children}:ListProps) => {
-  return (
-    <Wrapper>
-      {children}
-    </Wrapper>
-  );
+	return (
+		<Wrapper>
+			{children}
+		</Wrapper>
+	);
 };
 
 export default List;

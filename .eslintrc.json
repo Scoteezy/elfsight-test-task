@@ -19,7 +19,6 @@
   "rules": {
     // * Disconnect Prettier
     // "prettier/prettier": "off",
-
     // * Disconnect not used options
     "no-shadow": "off",
     "no-unused-vars": "off",
@@ -62,9 +61,7 @@
     ],
 
     // * Indent format (gap = 2)
-    "indent": ["error", 2],
-
-    // * Formatting the end of the line by UNIX format (LF)
+    "indent": ["error", "tab"],
 
     // * The term format ('string')
     "quotes": ["error", "double"],

@@ -64,20 +64,21 @@ interface CardProps {
     image: string;
     id: number | string;
     onClick:()=>void;
+    setModalId: (id: number | string) =>void;
 }
-const Card = ({status,image,gender,id,name, onClick}:CardProps) => {
-  return (
-    <Wrapper onClick={onClick}>
-      <CardImage alt={name} src={image}/>
-      <CardBody>
-        <CardTitle>{name}</CardTitle>
-        <CardList>
-          <CardListItem status={status}><b>{gender}</b></CardListItem>
-          <CardListItem status={status}><span>{status}</span></CardListItem>
-        </CardList>
-      </CardBody>
-    </Wrapper>
-  );
+const Card = ({status,image,gender,id,name,setModalId, onClick}:CardProps) => {
+	return (
+		<Wrapper onClick={onClick}>
+			<CardImage alt={name} onClick={()=>setModalId(id)} src={image}/>
+			<CardBody>
+				<CardTitle>{name}</CardTitle>
+				<CardList>
+					<CardListItem status={status}><b>{gender}</b></CardListItem>
+					<CardListItem status={status}><span>{status}</span></CardListItem>
+				</CardList>
+			</CardBody>
+		</Wrapper>
+	);
 };
 
 export default Card;

@@ -17,13 +17,13 @@ interface MainProps{
     children : React.ReactNode;
 }
 const Main = ({children}: MainProps) => {
-  return (
-    <Wrapper>
-      <Container>
-        {children}
-      </Container>
-    </Wrapper>
-  );
+	return (
+		<Wrapper>
+			<Container>
+				{children}
+			</Container>
+		</Wrapper>
+	);
 };
 
 export default Main;

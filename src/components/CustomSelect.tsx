@@ -8,23 +8,23 @@ interface CustomSelectProps {
 }
 
 export const CustomSelect = styled(Select).attrs({
-  styles: {
-    control: (provided)=>({
-      ...provided,
-      backgroundColor: "var(--colors-ui-base)",
-      color: "var(--colors-text)",
-      borderRadius: "var(--radii)",
-      border: "none",
-      boxShadow: "var(--shadow)",
-      height: "50px"
-    }),
-    option: (provided,state)=>({
-      ...provided,
-      cursor: "pointer",
-      color:"var(--colors-text)",
-      backgroundColor : state.isSelected ? "var(--color-bg)": "var(--colors-ui-base)",
-    })
-  }
+	styles: {
+		control: (provided)=>({
+			...provided,
+			backgroundColor: "var(--colors-ui-base)",
+			color: "var(--colors-text)",
+			borderRadius: "var(--radii)",
+			border: "none",
+			boxShadow: "var(--shadow)",
+			height: "50px"
+		}),
+		option: (provided,state)=>({
+			...provided,
+			cursor: "pointer",
+			color:"var(--colors-text)",
+			backgroundColor : state.isSelected ? "var(--color-bg)": "var(--colors-ui-base)",
+		})
+	}
 })<CustomSelectProps>`
     width: 200px;
     border-radius: var(--radii);

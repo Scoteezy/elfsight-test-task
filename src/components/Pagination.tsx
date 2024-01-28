@@ -22,17 +22,17 @@ const PageButton = styled.button`
     color: var(--color-text);
 `;
 const Pagination = ({totalPages=42, currentPage, setPage}:PaginationProps) => {
-  return (
-    <ButtonContainer>
-      {currentPage>1? <PageButton onClick={()=>{
-        setPage(currentPage-1);
-      }}>Prev</PageButton>: <PageButton disabled>Prev</PageButton>}
-      {currentPage}
-      {currentPage<=totalPages? <PageButton onClick={()=>{
-        setPage(currentPage+1);
-      }} >Next</PageButton>: <PageButton disabled>Next</PageButton>}
-    </ButtonContainer>
-  );
+	return (
+		<ButtonContainer>
+			{currentPage>1? <PageButton onClick={()=>{
+				setPage(currentPage-1);
+			}}>Prev</PageButton>: <PageButton disabled>Prev</PageButton>}
+			{currentPage}
+			{currentPage<=totalPages? <PageButton onClick={()=>{
+				setPage(currentPage+1);
+			}} >Next</PageButton>: <PageButton disabled>Next</PageButton>}
+		</ButtonContainer>
+	);
 };
 
 export default Pagination;

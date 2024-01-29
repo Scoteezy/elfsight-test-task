@@ -46,6 +46,7 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
 			({data})=> {
 				setCharacters(data.results);
 				setPages(data.info.pages);
+				handleSearch();
 			}
 		);
 	},[currentPage]);

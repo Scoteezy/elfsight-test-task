@@ -18,7 +18,7 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
 	const [pages,setPages] = useState(0);
 	const [currentPage,setCurrentPage] = useState(1);
 	const [modal,setModal] = useState(false);
-	const [modalId, setModalId] = useState<number | string>();
+	const [modalId, setModalId] = useState<number | string>(0);
 	const handleSearch = (search?:string, species?:string,status?:string, gender?: string, type?: string)=>{ 
 		let data = [...characters];
 

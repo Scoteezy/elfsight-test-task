@@ -39,9 +39,9 @@ const CardList = styled.ul`
 `;
 
 interface CardListItemProps {
-    status: statusType
+    status:statusType;
 }
-const CardListItem = styled.li<CardListItemProps> `
+const CardListItem = styled.li<CardListItemProps>`
     font-size: var(--fs-sm);
     line-height: 1.5;
     font-weight: var(--fw-light);
@@ -69,8 +69,10 @@ interface CardProps {
 const Card = ({status,image,gender,id,name,setModalId, onClick}:CardProps) => {
 
 	return (
-		<Wrapper onClick={onClick}>
-			<CardImage alt={name} onClick={()=>setModalId(id)} src={image}/>
+		<Wrapper>
+			<CardImage alt={name} onClick={()=>{
+				setModalId(id);onClick();
+			}} src={image}/>
 			<CardBody>
 				<CardTitle>{name}</CardTitle>
 				<CardList>

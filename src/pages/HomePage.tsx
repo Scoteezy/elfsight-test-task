@@ -18,11 +18,10 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
 	const [pages,setPages] = useState(0);
 	const [currentPage,setCurrentPage] = useState(1);
 	const [modal,setModal] = useState(false);
-	const [modalId, setModalId] = useState<number | string>(1);
+	const [modalId, setModalId] = useState<number | string>();
 	const handleSearch = (search?:string, species?:string,status?:string, gender?: string, type?: string)=>{ 
 		let data = [...characters];
 
-		console.log(data);
 		if(status){
 			data = data.filter(char => char.status.toLowerCase().includes(status.toLowerCase()));
 		}
@@ -54,6 +53,7 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
 	useEffect(()=>{
 		handleSearch();
 	},[characters]);
+	console.log(modal);
 	return (
 		<>
 			<Controls onSearch={handleSearch}/>

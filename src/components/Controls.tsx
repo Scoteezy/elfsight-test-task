@@ -79,8 +79,7 @@ const Controls = ({onSearch}: ControlsProps) => {
 		const speciesValue = species?.value || "";
 		const statusValue = status?.value || "";
 		const typeValue = type?.value || "";
-    
-		console.log(typeValue + " " + speciesValue + " " + statusValue + " " + genderValue);
+		
 		onSearch(search,speciesValue, statusValue,genderValue, typeValue);
 	},[search,gender, species,status,type]);
 

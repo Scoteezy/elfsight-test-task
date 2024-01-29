@@ -36,12 +36,30 @@ const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-
-@media (min-width: 767px) {
+@media (min-width: 1200px) {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
+
+`;
+const SelectContainer = styled.div`
+	display:grid;
+	grid-template-columns: repeat(1,1fr);
+    gap: 1rem;
+	@media(min-width: 575px){
+		grid-template-columns: repeat(2,1fr);
+        gap: 1rem;
+
+        padding: 2.5rem 0;
+	}
+	@media (min-width: 767px){
+       
+    }
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4,1fr);
+        gap: 1rem;
+    }
 `;
 
 interface ControlsProps{ 
@@ -68,39 +86,42 @@ const Controls = ({onSearch}: ControlsProps) => {
 
 	return (
 		<Wrapper>
+			
 			<Search search={search} setSearch={setSearch}/>
-			<CustomSelect
-				isClearable
-				isSearchable={false}
-				onChange={setGender}
-				options={optionsForGender}
-				placeholder="Filter by Gender"
-				value={gender}
-			/>
-			<CustomSelect
-				isClearable
-				isSearchable={false}
-				onChange={setStatus}
-				options={optionsForStatus}
-				placeholder="Filter by Status"
-				value={status}
-			/>
-			<CustomSelect
-				isClearable
-				isSearchable={false}
-				onChange={setType}
-				options={optionsForType}
-				placeholder="Filter by Type"
-				value={type}
-			/>
-			<CustomSelect
-				isClearable
-				isSearchable={false}
-				onChange={setSpecies}
-				options={optionsForSpecies}
-				placeholder="Filter by Species"
-				value={species}
-			/>
+			<SelectContainer>
+				<CustomSelect
+					isClearable
+					isSearchable={false}
+					onChange={setGender}
+					options={optionsForGender}
+					placeholder="Filter by Gender"
+					value={gender}
+				/>
+				<CustomSelect
+					isClearable
+					isSearchable={false}
+					onChange={setStatus}
+					options={optionsForStatus}
+					placeholder="Filter by Status"
+					value={status}
+				/>
+				<CustomSelect
+					isClearable
+					isSearchable={false}
+					onChange={setType}
+					options={optionsForType}
+					placeholder="Filter by Type"
+					value={type}
+				/>
+				<CustomSelect
+					isClearable
+					isSearchable={false}
+					onChange={setSpecies}
+					options={optionsForSpecies}
+					placeholder="Filter by Species"
+					value={species}
+				/>
+			</SelectContainer>
 		</Wrapper>
 	);
 };

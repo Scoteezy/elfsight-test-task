@@ -8,6 +8,7 @@ import { Character,status as statusType} from "../types/types";
 interface ModalProps { 
     id: number | string;
     modal: boolean
+	setModal: (modal:boolean)=>void;
 }
 interface ModalStyleProps {
 	modal: boolean;
@@ -16,17 +17,32 @@ interface ModalTitleProps {
 	status: statusType | undefined;
 }
 const ModalContainer = styled.div<ModalStyleProps>`
-   display: ${({modal})=>modal ? "block": " none"};
+   top: ${({modal})=>modal ? "50%": " -500%"};
    position: fixed;
-   top: 50%;     
-   left: 50%;                    
+   /* top: ;      */
+   left: 50%;      
+   width: 100%;
+   height: 100%;        
    transform: translate(-50%, -50%); 
    box-shadow:var(--shadow);
    background: var(--color-bg);
    border-radius: var(--radii);
+   transition: all .4s linear;
     img{ 
 	border-radius: var(--radii) var(--radii) 0 0;
+	width:100%;
    }
+   @media (min-width: 555px){
+       width: 400px;
+	   height: auto;
+    }
+	@media (min-width: 767px){
+		bottom: ${({modal})=>modal ? "0": " -500%"};
+		top: auto;
+		right: 0;
+		left: auto;
+		transform: none;
+    }
 `;
 const ModalTitle = styled.h2<ModalTitleProps>`
 	padding: 0;
@@ -50,24 +66,33 @@ const ModalP = styled.p`
 	}
 `;
 const ModalExit = styled.span`
-	
+	cursor: pointer;
+	position: absolute;
+	right: 15px;
+	top:10px;
+	font-size: 30px;
 `;
-const Modal = ({id,modal} : ModalProps) => {
+const Modal = ({id,modal,setModal} : ModalProps) => {
 	const [character, setCharacter] = useState<Character>();
 
 	useEffect(() => {
 		if(character?.id!==id){
-			axios.get(`${GET_ONE_BY_ID(id)}`).then(
-				({data})=> {
-					setCharacter(data);
-				}
-			);
+			setModal(false);
+			setTimeout(()=>{
+				axios.get(`${GET_ONE_BY_ID(id)}`).then(
+					({data})=> {
+						setModal(true);
+						setCharacter(data);
+					}
+				);
+			},100);
+			
 		}
 	}, [id]);
-  
+
 	return (
 		<ModalContainer modal={modal}>
-			<ModalExit>&times;</ModalExit>
+			<ModalExit onClick={()=>setModal(false)}>&times;</ModalExit>
 			<img alt={character?.name} src={character?.image} />
 			<ModalTitle 
 				status={character?.status}

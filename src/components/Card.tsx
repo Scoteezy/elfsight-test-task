@@ -67,6 +67,7 @@ interface CardProps {
     setModalId: (id: number | string) =>void;
 }
 const Card = ({status,image,gender,id,name,setModalId, onClick}:CardProps) => {
+
 	return (
 		<Wrapper onClick={onClick}>
 			<CardImage alt={name} onClick={()=>setModalId(id)} src={image}/>

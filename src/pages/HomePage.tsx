@@ -83,6 +83,7 @@ const HomePage = ({characters,setCharacters}:HomePageProps) => {
 			<Modal 
 				id={modalId} 
 				modal={modal}
+				setModal={setModal}
 			/> 
 		</>
 		
